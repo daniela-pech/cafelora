@@ -20,3 +20,11 @@ document.querySelector('#root').innerHTML = render(
     <Footer />
   </div>,
 );
+
+const rollout = document.querySelector('.rollout-nav');
+const rozbaleniNavigace = (evt) => {
+  rollout.classList.toggle('nav-closed');
+};
+const ikonaNavigace = document.querySelector('.nav-btn');
+ikonaNavigace.addEventListener('click', rozbaleniNavigace);
+rollout.addEventListener('click', rozbaleniNavigace);

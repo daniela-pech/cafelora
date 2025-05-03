@@ -1,7 +1,7 @@
 import { Layer } from '../Layer';
 import './style.css';
 
-export const Drink = ({ name, image }) => {
+export const Drink = ({ name, image, layers }) => {
   return (
     <div className="drink">
       <div className="drink__product">
@@ -10,7 +10,13 @@ export const Drink = ({ name, image }) => {
         </div>
         <div className="drink__info">
           <h3>{name}</h3>
-          <Layer color="#feeeca" label="mléčná pěna" />
+          {layers.map((vrstva) => (
+            <Layer
+              key={vrstva.label}
+              color={vrstva.color}
+              label={vrstva.label}
+            />
+          ))}
         </div>
       </div>
       <form className="drink__controls">

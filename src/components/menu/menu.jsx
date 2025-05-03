@@ -1,7 +1,9 @@
-import { Drink } from '../drink/index.jsx';
+import { Drink } from '../Drink/index.jsx';
+import { Layer } from '../Layer/index.jsx';
 import './menu.css';
 
-export const Menu = () => {
+export const Menu = ({ drinks }) => {
+  console.log(drinks);
   return (
     <section className="menu" id="menu">
       <div className="container">
@@ -10,22 +12,16 @@ export const Menu = () => {
           Vyberte si z našeho interaktivního menu a nemusíte čekat na obsluhu
         </p>
         <div className="drinks-list">
-          <Drink
-            id={0}
-            name="Romano"
-            ordered={false}
-            image="http://localhost:4000/assets/cups/romano.png"
-            layers={[
-              {
-                color: '#fbdf5b',
-                label: 'citrón',
-              },
-              {
-                color: '#613916',
-                label: 'espresso',
-              },
-            ]}
-          />
+          {drinks.data.map((napoj) => (
+            <Drink
+              key={napoj.id}
+              id={napoj.id}
+              name={napoj.name}
+              ordered={napoj.ordered}
+              image={`http://localhost:4000${napoj.image}`}
+              layers={napoj.layers}
+            />
+          ))}
         </div>
 
         <div className="order-detail">
